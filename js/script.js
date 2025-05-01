@@ -223,7 +223,7 @@ const items = [
 	},
 	{
 		imageSrc: `${basePath}imgs/breast/thrasher.png`,
-		stats: { deff: 1, damage: 1, krit: 10, armourmax: 25 },
+		stats: { deff: 2, damage: 1, krit: 10, armourmax: 25 },
 		upg: 'deff',
 		yellow: {}
 	},
