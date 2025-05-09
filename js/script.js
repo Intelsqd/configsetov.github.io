@@ -1045,7 +1045,7 @@ $(document).ready(function () {
         var $gridItem = $(this).closest('.grid-item');
         var $buttonContainer = $('<div class="button-container"></div>');
         var buttons = [
-            { text: 'ДЕФФ', type: 'deff', value: 3 },
+            { text: 'ДЕФФ', type: 'deff', value: 6 },
             { text: 'УРОН', type: 'damage', value: 3 },
             { text: 'КРИТ', type: 'krit', value: 3 },
             { text: 'ОТРАЖЕНИЕ', type: 'otrazh', value: 3 }
