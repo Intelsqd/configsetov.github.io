@@ -472,6 +472,12 @@ function updateStats() {
                         if (zatochka == 13) {
                             stats.armourmax = (stats.armourmax || 0) + 9;
                             stats.hpmax = (stats.hpmax || 0) + 4;
+						}
+						if (zatochka == 14) {
+                            stats.otrazh = (stats.otrazh ||  0) + 1;
+                            stats.hpmin = (stats.hpmin ||  0) + 3;
+                            stats.armourmax = (stats.armourmax ||  0) + 14;
+                            stats.hpmax = (stats.hpmax ||  0) + 4;
                         }
                     }
                 }
@@ -994,7 +1000,7 @@ $(document).ready(function () {
 
         let span = $(this).closest('.grid-text').find('span');
         let currentValue = parseInt(span.text().replace('+', ''));
-        if (currentValue < 13) {
+        if (currentValue < 14) {
             span.text(`+${currentValue + 1}`);
             updateStats();
         }
