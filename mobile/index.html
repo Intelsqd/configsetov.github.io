@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[M] Конфигуратор сетов</title>
+  <link rel="icon" type="image/x-icon" href="../imgs/icon.png">
+  <script src="../js/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="../css/m-style.css">
+</head>
+
+<body>
+  <div class="fan-content" style="position: absolute;">
+    <img src="../imgs/icon.png">
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <h2>Выберите аксессуар на который совершить перенос</h2>
+      <div class="modal-accs"></div>
+      <button id="closeModal">Без переноса</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalDelete">
+    <div class="modal">
+      <h2>Вы уверены что хотите удалить аксессуар из слота [SLOT_NAME]?</h2>
+      <button id="yesDelete">Да</button>
+      <button id="noDelete">Нет</button>
+    </div>
+  </div>
+
+  <div class="container mobile">
+    <div class="character-section">
+      <div id="character">
+        <img src="../imgs/characters/template.png" alt="Character" id="character-image" style="width: 100%;">
+      </div>
+	  <div class="character-chooser">
+	    <button id="character-select" class="character-select-button">Выбрать персонажа</button>
+	    <div id="character-list" class="character-list">
+        <div class="character-option" data-skin="ct">CT</div>
+        <div class="character-option" data-skin="homelander">Homelander</div>
+        <div class="character-option" data-skin="rilay">Rilay</div>
+        <div class="character-option" data-skin="superman">Superman</div>
+        <div class="character-option" data-skin="xikkaistoka">Xikkaistoka</div>
+	    </div>
+	  </div>
+      <div id="character-zatoch-value">Заточка персонажа: <span>0</span></div>
+      <div class="stats">
+        <div>Защита: <span id="deff">[-0% урона]</span></div>
+        <div>Регенерация: <span id="hpmin">[0 HP в мин.]</span></div>
+        <div>Урон: <span id="damage">[+0 урона]</span></div>
+        <div>Удача: <span id="krit">[шанс 0% крит.урона]</span></div>
+        <div>Макс. HP: <span id="hpmax">[+0 макс. HP]</span></div>
+        <div>Макс. Брони: <span id="armourmax">[+0 макс. Брони]</span></div>
+        <div>Шанс оглушения: <span id="oglysh">[+0%]</span></div>
+        <div>Шанс опьянения: <span id="opyan">[+0%]</span></div>
+        <div>Шанс избежать оглушения: <span id="neoglysh">[+0%]</span></div>
+        <div>Отражение урона: <span id="otrazh">[-0%]</span></div>
+      </div>
+    </div>
+
+    <div class="slots">
+      <div class="grid-item" id="head" ru-name="Аксессуар на голову">
+        <div class="grid-text">
+          <button class="btn nashivka">N</button>
+          <span class="zatoch-value">+14</span>
+          <button class="btn minus">-</button>
+          <button class="btn plus">+</button>
+        </div>
+        <div class="tooltip"></div>
+      </div>
+
+      <div class="grid-item" id="face" ru-name="Аксессуар на лицо">
+        <div class="grid-text">
+          <button class="btn nashivka">N</button>
+          <span class="zatoch-value">+14</span>
+          <button class="btn minus">-</button>
+          <button class="btn plus">+</button>
+        </div>
+        <div class="tooltip"></div>
+      </div>
+
+      <div class="grid-item" id="hand" ru-name="Аксессуар в руку">
+        <div class="grid-text">
+          <button class="btn nashivka">N</button>
+          <span class="zatoch-value">+14</span>
+          <button class="btn minus">-</button>
+          <button class="btn plus">+</button>
+        </div>
+        <div class="tooltip"></div>
+      </div>
+
+      <div class="grid-item" id="breast" ru-name="Аксессуар на грудь">
+        <div class="grid-text">
+          <button class="btn nashivka">N</button>
+          <span class="zatoch-value">+14</span>
+          <button class="btn minus">-</button>
+          <button class="btn plus">+</button>
+        </div>
+        <div class="tooltip"></div>
+      </div>
+
+      <div class="grid-item" id="shoulder" ru-name="Аксессуар на плечо">
+        <div class="grid-text">
+          <button class="btn nashivka">N</button>
+          <span class="zatoch-value">+14</span>
+          <button class="btn minus">-</button>
+          <button class="btn plus">+</button>
+        </div>
+        <div class="tooltip"></div>
+      </div>
+
+      <div class="grid-item" id="spine" ru-name="Аксессуар на спину">
+        <div class="grid-text">
+          <button class="btn nashivka">N</button>
+          <span class="zatoch-value">+14</span>
+          <button class="btn minus">-</button>
+          <button class="btn plus">+</button>
+        </div>
+        <div class="tooltip"></div>
+      </div>
+
+      <div class="grid-item" id="armour" ru-name="Бронежилет">
+        <div class="grid-text">
+          <button class="btn nashivkabronik">N</button>
+          <span class="zatoch-value">+13</span>
+          <button class="btn minus">-</button>
+          <button class="btn plus">+</button>
+        </div>
+        <div class="tooltip"></div>
+      </div>
+
+      <div class="grid-item" id="case" ru-name="Чемодан">
+        <div class="grid-text"></div>
+        <div class="tooltip"></div>
+      </div>
+    </div>
+
+    <div class="mini-containers">
+      <div class="mini-container" slot-name="head"></div>
+      <div class="mini-container" slot-name="face"></div>
+      <div class="mini-container" slot-name="hand"></div>
+      <div class="mini-container" slot-name="breast"></div>
+      <div class="mini-container" slot-name="shoulder"></div>
+      <div class="mini-container" slot-name="spine"></div>
+      <div class="mini-container" slot-name="armour"></div>
+      <div class="mini-container" slot-name="case"></div>
+    </div>
+
+  </div>
+
+  <script src="../js/script_mob.js"></script>
+</body>
+
+</html>
