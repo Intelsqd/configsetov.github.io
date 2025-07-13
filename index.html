@@ -5,42 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Конфигуратор сетов</title>
+    <link rel="icon" type="image/x-icon" href="./imgs/icon.png">
     <script src="./js/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
+        <div>          
+        </div>
+    </div>
     <div class="modal-overlay" id="modalOverlay">
-        <div class="modal">
-            <h2>Выберите аксессуар на который совершить перенос</h2>
+        <div class="modal" style="position: relative;">
+            <button id="closeXModal"
+                style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:36px; cursor:pointer; color: white;">×</button>
+            <h2>Выберите аксессуар на который совершить перенос:</h2>
             <div class="modal-accs"></div>
             <button id="closeModal">Без переноса</button>
         </div>
     </div>
-    <div class="character-zatoch" style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-        <button class="btn minus-character">-</button>
-        <span id="character-zatoch-value" style="font-size: 18px; color: white;">+0</span>
-        <button class="btn plus-character">+</button>
-    </div>    
+    <div class="modal-overlay" id="modalNashivkaOverlay">
+        <div class="modal nashivki-modal" style="position: relative;">
+            <button id="closeXModalNashivka"
+                style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:36px; cursor:pointer; color: white;">×</button>
+            <h2>Выберите нашивку:</h2>
+            <div class="modal-nashivki"></div>
+            <button id="closeNashivkaModal">Без нашивки</button>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modalSkinsOverlay" style="display:none;">
+        <div class="modal" style="position: relative;">
+            <button id="closeXModalSkin"
+                style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:36px; cursor:pointer; color: white;">×</button>
+            <h2>Выберите скин:</h2>
+            <div class="modal-skins"></div>
+            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                <button id="closeNoneSkinModal">Под организацию</button>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="left-section">
-            <div class="character" style="margin-top: 10px; display: flex; align-items: center; gap: 10px;">
-                <div>
-                    <button id="character-select" class="character-select-button">Выбрать персонажа</button>
-                    <div id="character-list" class="character-list">
-                        <div class="character-option" data-skin="ct">Спецназ</div>
-                        <div class="character-option" data-skin="homelander">Хоумлендер</div>
-                        <div class="character-option" data-skin="rilay">Рилай</div>
-                        <div class="character-option" data-skin="superman">Супермен</div>
-                        <div class="character-option" data-skin="xikkaistoka">Хикка Истока</div>
-						<div class="character-option" data-skin="dedpul">Дэдпул</div>
-						<div class="character-option" data-skin="power">Пауэр</div>
-						<div class="character-option" data-skin="makima">Макима</div>
-                    </div>
-                </div>
+            <div class="character">
                 <div style="cursor: pointer; position: relative;" id="character">
-                    <img src="./imgs/characters/template.png" alt="Character" style="width: 20vw" id="character-image">
-                    <div class="tooltip" style="bottom: 101%;">Нажмите на кнопку "Выбрать персонажа" и выберите скин</div>
+                    <img src="./imgs/characters/mafia.png" alt="Character" style="width: 20vw" id="character-image">
+                    <div class="tooltip" style="bottom: 101%;">Нажмите чтобы выбрать скин</div>
                 </div>
                 <div class="info">
                     <span class="highlight white">Защита: <span class="highlight" id="deff">[-0%
@@ -61,7 +69,13 @@
                     <span class="highlight white">Шанс избежать оглушения: <span class="highlight"
                             id="neoglysh">[+0%]</span></span><br>
                     <span class="highlight white">Отражение урона: <span class="highlight"
-                            id="otrazh">[-0%]</span></span>
+                            id="otrazh">[-0%]</span></span><br>
+                    <span class="highlight white">Блокировка урона: <span class="highlight"
+                            id="block">[0 раз]</span></span><br>
+                    <span class="highlight white">Скорострельность: <span class="highlight"
+                            id="rof">[+0% скорострельности]</span></span><br>
+                    <span class="highlight white">Отдача: <span class="highlight"
+                            id="recoil">[-0% отдачи]</span></span>
                 </div>
             </div>
             <div class="grid">
@@ -136,7 +150,7 @@
                     <div class="tooltip"></div>
                 </div>
             </div>
-
+            
         </div>
 
         <div class="trash">

@@ -1,5 +1,3 @@
-let currentSkin = '';
-let characterUpgradeLevel = 0;
 function isMobileDevice() {
     return /Mobi|Android/i.test(navigator.userAgent);
 }
@@ -21,249 +19,521 @@ const items = [
         imageSrc: `${basePath}imgs/face/netri.png`,
         stats: { deff: 2, krit: 25 },
         upg: 'deff',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Анимированные очки Netrunner'
     },
     {
-        imageSrc: `${basePath}imgs/head/nimbdori.png`,
-        stats: { deff: 2, damage: 1, krit: 1, hpmax: 10, hpmin: 1 },
-        upg: 'hpmin',
-        yellow: {}
+        imageSrc: `${basePath}imgs/face/cyberpunkvr.png`,
+        stats: { deff: 2, krit: 25 },
+        upg: 'deff',
+        yellow: {},
+        ru_name: 'Киберпанковские VR-очки'
     },
     {
         imageSrc: `${basePath}imgs/face/maskinvisible.png`,
         stats: { deff: 0, oglysh: 3 },
         upg: 'deff',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Маска-невидимка'
     },
     {
         imageSrc: `${basePath}imgs/shoulder/magshar2.png`,
         stats: { deff: 2, damage: 1, krit: 10, armourmax: 25 },
         upg: 'deff',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Магический воздушный шар #2'
     },
     {
         imageSrc: `${basePath}imgs/shoulder/energoshar.png`,
-        stats: { deff: 4, damage: 4, krit: 14, hpmax: 5, armourmax: 27, neoglysh: 10 },
+        stats: { deff: 4, damage: 4, krit: 24, hpmax: 5, armourmax: 27, neoglysh: 10 },
         upg: 'deff',
-        yellow: {}
-    },
-    {
-        imageSrc: `${basePath}imgs/case/enegrochem.png`,
-        stats: { damage: 3, oglysh: 13, neoglysh: 4 },
-        upg: '',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Энергетический воздушный шар'
     },
     {
         imageSrc: `${basePath}imgs/case/chem.png`,
         stats: { oglysh: 6 },
         upg: '',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Дьявольский чемодан'
+    },
+    {
+        imageSrc: `${basePath}imgs/case/enegrochem.png`,
+        stats: { damage: 3, oglysh: 13, neoglysh: 4 },
+        upg: '',
+        yellow: {},
+        ru_name: 'Энергетический чемодан'
     },
     {
         imageSrc: `${basePath}imgs/armour/bronik.png`,
         stats: { deff: 2, krit: 1, armourmax: 0 },
         upg: 'armour',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Бронежилет «Игра в кальмара»'
     },
     {
         imageSrc: `${basePath}imgs/armour/genbronik.png`,
         stats: { deff: 2, damage: 2, krit: 1, armourmax: 35 },
         upg: 'armour',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Генеральский бронежилет'
     },
     {
         imageSrc: `${basePath}imgs/hand/duff.png`,
         stats: { damage: 4 },
         upg: 'damage',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Молот «Duff»'
     },
     {
         imageSrc: `${basePath}imgs/hand/fraps.png`,
         stats: { deff: 2, damage: 2, krit: 2 },
         upg: 'damage',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Табличка «Фрапс пишется»'
     },
     {
         imageSrc: `${basePath}imgs/head/deadinside.png`,
         stats: { damage: 1, krit: 10, oglysh: 1 },
         upg: 'krit',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Маркер dead inside'
+    },
+    {
+        imageSrc: `${basePath}imgs/head/endercube.png`,
+        stats: { damage: 1, krit: 10, oglysh: 1 },
+        upg: 'krit',
+        yellow: {},
+        ru_name: 'Эндер куб'
     },
     {
         imageSrc: `${basePath}imgs/spine/tor.png`,
         stats: { damage: 4 },
         upg: 'damage',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Молот Тора'
+    },
+    {
+        imageSrc: `${basePath}imgs/spine/jasehummer.png`,
+        stats: { damage: 4 },
+        upg: 'damage',
+        yellow: {},
+        ru_name: 'Молот Джейса'
     },
     {
         imageSrc: `${basePath}imgs/spine/rbt.png`,
         stats: { deff: 4 },
         upg: 'deff',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Русский боевой топор'
+    },
+    {
+        imageSrc: `${basePath}imgs/spine/ka.png`,
+        stats: { deff: 4 },
+        upg: 'deff',
+        yellow: {},
+        ru_name: 'Щит Капитана Америки'
+    },
+    {
+        imageSrc: `${basePath}imgs/spine/magmaxe.png`,
+        stats: { deff: 4 },
+        upg: 'deff',
+        yellow: {},
+        ru_name: 'Магмовый топор'
+    },
+    {
+        imageSrc: `${basePath}imgs/spine/icesword.png`,
+        stats: { deff: 4 },
+        upg: 'deff',
+        yellow: {},
+        ru_name: 'Ледяной меч'
     },
     {
         imageSrc: `${basePath}imgs/spine/energoshield.png`,
         stats: { deff: 4, hpmax: 10, opyan: 2 },
         upg: 'deff',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Энергетический щит'
     },
     {
         imageSrc: `${basePath}imgs/shoulder/delorean.png`,
         stats: { deff: 0, krit: 10, armourmax: 20, oglysh: 4 },
         upg: 'deff',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Игрушечный Delorean'
     },
     {
         imageSrc: `${basePath}imgs/shoulder/pexpress.png`,
         stats: { deff: 0, krit: 10, armourmax: 20, oglysh: 4 },
         upg: 'deff',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Planet Express'
     },
     {
         imageSrc: `${basePath}imgs/breast/mahi.png`,
         stats: { deff: 2, damage: 1, krit: 10, armourmax: 25 },
         upg: 'damage',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Цепь «Махинатор»'
     },
     {
         imageSrc: `${basePath}imgs/breast/energomahi.png`,
         stats: { deff: 4, damage: 2, krit: 12, armourmax: 25 },
         upg: 'damage',
-        yellow: { damage: 2, hpmax: 5 }
+        yellow: { damage: 2, hpmax: 5 },
+        ru_name: 'Энергетический махинатор'
     },
     {
         imageSrc: `${basePath}imgs/head/bad.png`,
         stats: { krit: 10 },
         upg: 'krit',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Маркер «BAD»'
     },
     {
         imageSrc: `${basePath}imgs/head/ironman.png`,
         stats: { krit: 2 },
         upg: 'krit',
-        yellow: {}
-    },
-	{
-        imageSrc: `${basePath}imgs/head/robosanta.png`,
-        stats: { krit: 2 },
-        upg: 'krit',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Шлем железного человека'
     },
     {
         imageSrc: `${basePath}imgs/head/pepe.png`,
         stats: { krit: 1 },
         upg: 'krit',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Веселый Пепе'
     },
     {
         imageSrc: `${basePath}imgs/head/tikva.png`,
         stats: { deff: 2, damage: 2, krit: 2 },
         upg: 'hpmin',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Голова Тыква'
     },
     {
         imageSrc: `${basePath}imgs/hand/azinot.png`,
         stats: { deff: 2, damage: 2, krit: 2 },
         upg: 'damage',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Клинки Аззинота'
     },
     {
         imageSrc: `${basePath}imgs/breast/magsphere.png`,
         stats: { deff: 2, krit: 1 },
         upg: 'krit',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Магические сфера'
     },
     {
         imageSrc: `${basePath}imgs/face/sphereoverhead.png`,
         stats: { deff: 2, damage: 2, krit: 2 },
         upg: 'deff',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Сфера над головой'
     },
     {
         imageSrc: `${basePath}imgs/head/jetpack.png`,
         stats: { deff: 2, damage: 2, krit: 2 },
         upg: 'hpmin',
-        yellow: {}
+        yellow: {},
+        ru_name: 'Джетпак'
     },
-	{
-		imageSrc: `${basePath}imgs/face/cherep.png`,
-		stats: { damage: 2, armourmax: 10 },
-		upg: 'damage',
-		yellow: {}
-	},
-	{
-		imageSrc: `${basePath}imgs/face/frontman.png`,
-		stats: { damage: 1, hpmax: 5 },
-		upg: 'damage',
-		yellow: {}
-	},
-	{
-		imageSrc: `${basePath}imgs/hand/kosamarsi.png`,
-		stats: { hpmax: 10, armourmax: 10 },
-		upg: 'hpmax',
-		yellow: {}
-	},	
-	{
-		imageSrc: `${basePath}imgs/head/endcube.png`,
-		stats: { damage: 1, krit: 10, oglysh: 1 },
-		upg: 'krit',
-		yellow: {}
-	},	
-	{
-		imageSrc: `${basePath}imgs/spine/mineskelet.png`,
-		stats: { krit: 0 },
-		upg: 'krit',
-		yellow: {}
-	},	
-	{
-		imageSrc: `${basePath}imgs/spine/rukiseta.png`,
-		stats: { krit: 0 },
-		upg: 'krit',
-		yellow: {}
-	},
-	{
+    {
+        imageSrc: `${basePath}imgs/hand/magaxe.png`,
+        stats: { damage: 4 },
+        upg: 'damage',
+        yellow: {},
+        ru_name: 'Магический топор'
+    },
+    {
+        imageSrc: `${basePath}imgs/breast/swag.png`,
+        stats: { deff: 2, damage: 1, krit: 10, armourmax: 25 },
+        upg: 'damage',
+        yellow: {},
+        ru_name: 'Цепь SWAG'
+    },
+    {
+        imageSrc: `${basePath}imgs/breast/swaga.png`,
+        stats: { deff: 2, damage: 1, krit: 10, armourmax: 25 },
+        upg: 'damage',
+        yellow: {},
+        ru_name: 'Цепь СВАГА'
+    },
+    {
+        imageSrc: `${basePath}imgs/spine/baseballbatcompton.png`,
+        stats: { deff: 4, oglysh: 5 },
+        upg: 'deff',
+        yellow: {},
+        ru_name: 'Бейсбольная бита Compton'
+    },
+    {
+        imageSrc: `${basePath}imgs/spine/goldmount.png`,
+        stats: { deff: 4, oglysh: 11 },
+        upg: 'deff',
+        yellow: {},
+        ru_name: 'Золотая монтировка'
+    },
+    {
+        imageSrc: `${basePath}imgs/shoulder/piratecompass.png`,
+        stats: { deff: 4, damage: 4, krit: 24, hpmax: 5, armourmax: 27, neoglysh: 20 },
+        upg: 'deff',
+        yellow: {},
+        ru_name: 'Пиратский компас'
+    },
+    {
+        imageSrc: `${basePath}imgs/shoulder/flyingdutchman.png`,
+        stats: { deff: 4, damage: 4, krit: 24, hpmax: 5, armourmax: 27, neoglysh: 20 },
+        upg: 'deff',
+        yellow: {},
+        ru_name: 'Летучий голландец'
+    },
+		{
 		imageSrc: `${basePath}imgs/breast/thrasher.png`,
-		stats: { deff: 2, damage: 1, krit: 10, armourmax: 25 },
-		upg: 'deff',
-		yellow: {}
+		stats: { deff: 1, damage: 1, krit: 10, armourmax: 25 },
+		upg: 'damage',
+		yellow: {},
+		ru_name: 'Цепь трешер'
 	},
- 	{
-		imageSrc: `${basePath}imgs/spine/mechvk.png`,
-		stats: { krit: 0 },
-		upg: 'krit',
-		yellow: {}
-	},
-	{
-		imageSrc: `${basePath}imgs/shoulder/sferinvokera.png`,
-		stats: { deff: 0 },
-		upg: 'deff',
-		yellow: {}
-	},
-	{
-		imageSrc: `${basePath}imgs/spine/ribak.png`,
-		stats: { krit: 0 },
-		upg: 'krit',
-		yellow: {}
-	},
-	{
+		{
 		imageSrc: `${basePath}imgs/case/rgbchem.png`,
 		stats: { oglysh: 6 },
 		upg: 'oglysh',
-		yellow: {}
+		yellow: {},
+		ru_name: 'RGB чемодан'
 	},
-	{
+		{
 		imageSrc: `${basePath}imgs/case/bomjcase.png`,
 		stats: { oglysh: 6 },
 		upg: 'oglysh',
-		yellow: {}
+		yellow: {},
+		ru_name: 'Чемодан bomjgang'
 	},
-	{
+		{
+		imageSrc: `${basePath}imgs/face/cherep.png`,
+		stats: { deff: 0 },
+		upg: 'deff',
+		yellow: {damage: 2, armourmax: 10 },
+		ru_name: 'Маска череп'
+	},
+	    {
+		imageSrc: `${basePath}imgs/face/energymaskghost.png`,
+		stats: {hpmin: 0},
+		upg: 'hpmin',
+		yellow: {deff: 5, damage: 5, hpmax: 20, opyan: 4, block: 4},
+		ru_name: 'Энерго маска Госта'
+	},
+	    {
 		imageSrc: `${basePath}imgs/hand/perchvai.png`,
 		stats: { damage: 4 },
 		upg: 'damage',
-		yellow: {}
+		yellow: {},
+		ru_name: 'Перчатка Вай'
 	},
+	    {
+		imageSrc: `${basePath}imgs/hand/kosamarsi.png`,
+		stats: { damage: 0 },
+		upg: 'damage',
+		yellow: {hpmax: 10, armourmax: 10},
+		ru_name: 'Коса Марси'
+	},	
+	    {
+        imageSrc: `${basePath}imgs/head/nimbdori.png`,
+        stats: { hpmin: 0 },
+        upg: 'hpmin',
+        yellow: {deff: 2, damage: 1, krit: 1, hpmax: 10},
+		ru_name: 'Нимб Доры'
+    },
+	    {
+        imageSrc: `${basePath}imgs/head/robosanta.png`,
+        stats: { krit: 2 },
+        upg: 'krit',
+        yellow: {},
+		ru_name: 'Голова Робосанты'
+    },
+	    {
+		imageSrc: `${basePath}imgs/shoulder/sferinvokera.png`,
+		stats: { deff: 0 },
+		upg: 'deff',
+		yellow: {},
+		ru_name: 'Сферы Инвокера'
+	},
+	{
+		imageSrc: `${basePath}imgs/spine/mineskelet.png`,
+		stats: { deff: 0 },
+		upg: 'deff',
+		yellow: {},
+		ru_name: 'МайнСкелет'
+	},	
 ];
+
+const nashivki = [
+    {
+        imageSrc: `${basePath}imgs/nashivki/deff.png`,
+        stats: { deff: 6 },
+        ru_name: 'Нашивка на защиту',
+        slot: 'all', slot_name: 'Все слоты'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/damage.png`,
+        stats: { damage: 3 },
+        ru_name: 'Нашивка на урон',
+        slot: 'all', slot_name: 'Все слоты'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/hpmin.png`,
+        stats: { hpmin: 3 },
+        ru_name: 'Нашивка на регенерацию',
+        slot: 'all', slot_name: 'Все слоты'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/krit.png`,
+        stats: { krit: 3 },
+        ru_name: 'Нашивка на удачу',
+        slot: 'all', slot_name: 'Все слоты'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/hpmax.png`,
+        stats: { hpmax: 8 },
+        ru_name: 'Нашивка на макс. хп',
+        slot: 'all', slot_name: 'Все слоты'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/otrazh.png`,
+        stats: { otrazh: 3 },
+        ru_name: 'Нашивка на отражение урона',
+        slot: 'all', slot_name: 'Все слоты'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/darkness.png`,
+        stats: { deff: 4, damage: 2 },
+        ru_name: 'Легендарная нашивка тьмы',
+        slot: 'head', slot_name: '1-ый слот'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/monster.png`,
+        stats: { deff: 4, damage: 2 },
+        ru_name: 'Легендарная нашивка Монстра',
+        slot: 'face', slot_name: '2-ой слот'
+    },
+    {
+        imageSrc: `${basePath}imgs/nashivki/energy.png`,
+        stats: { deff: 8, damage: 4, oglysh: 3 },
+        ru_name: 'Легендарная нашивка Энергии',
+        slot: 'hand', slot_name: '3-ий слот'
+    },
+]
+
+const skins = [
+    {
+        imageSrc: `${basePath}imgs/skins/ct.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Спецназовец'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/deadpool.png`,
+        yellow: { damage: 2, krit: 2, otrazh: 3 },
+        ru_name: 'Дэдпул'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/denji.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Дэнджи'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/farmeristoka.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Фермер Истока'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/grib1.png`,
+        yellow: { damage: 2, hpmax: 5, oglysh: 5 },
+        ru_name: 'Грибы 1'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/grib2.png`,
+        yellow: { damage: 2, hpmax: 5, oglysh: 5 },
+        ru_name: 'Грибы 2'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/hikkiistoka.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Хикки Истока'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/invoker.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Инвокер'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/jackvorobey.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Джек Воробей'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/makima.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Макима'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/power.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Пауэр'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/rilay.png`,
+        yellow: { damage: 2, hpmax: 5, oglysh: 5 },
+        ru_name: 'Рилай'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/slavik.png`,
+        yellow: { damage: 2, hpmax: 5, oglysh: 5 },
+        ru_name: 'Славик'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/trump.png`,
+        yellow: { damage: 2, hpmax: 5, oglysh: 5 },
+        ru_name: 'Парадийный Трамп'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/wolverine.png`,
+        yellow: { deff: 2, krit: 1, otrazh: 2 },
+        ru_name: 'Росомаха'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/leorik.png`,
+        yellow: { krit: 2 },
+        ru_name: 'Леорик'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/davyjones.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Дейви Джонс'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/thenotoriousbig.png`,
+        yellow: { krit: 2 },
+        ru_name: 'THE NOTORIOUS B.I.G'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/lockdog.png`,
+        yellow: { damage: 2, hpmax: 5, krit: 5 },
+        ru_name: 'Лок Дог'
+    },
+    {
+        imageSrc: `${basePath}imgs/skins/skuf.png`,
+        yellow: { deff: 2, damage: 2, otrazh: 3 },
+        ru_name: 'Скуф'
+    },
+	{
+        imageSrc: `${basePath}imgs/skins/yoda.png`,
+		stats: { deff: 0, hpmin: 0, damage: 0, krit: 0, maxhp: 0},
+        yellow: {},
+        ru_name: 'Йода'
+    },
+];
+
+var selectedSkin = null;
 
 var RuTypes = {
     deff: 'Защита',
@@ -275,7 +545,10 @@ var RuTypes = {
     oglysh: 'Шанс оглушения',
     opyan: 'Шанс опьянения',
     neoglysh: 'Шанс избежать оглушения',
-    otrazh: 'Отражение урона'
+    otrazh: 'Отражение урона',
+    block: 'Блокировка урона',
+    rof: 'Скорострельность',
+    recoil: 'Отдача'
 };
 
 var RuSlots = {
@@ -289,89 +562,13 @@ var RuSlots = {
     case: 'Чемодан'
 }
 
-const characters = {
-    ct: {
-        extra: { deff : 2, damage: 2, otrazh: 3 },
-        zatochkaBuffs: getDefaultZatochkaBuffs()
-    },
-    homelander: {
-        extra: { deff: 0 },
-        zatochkaBuffs: getDefaultZatochkaBuffs()
-    },
-    rilay: {
-        extra: { hpmax: 5, damage: 2, oglysh: 10 },
-        zatochkaBuffs: getDefaultZatochkaBuffs()
-    },
-    superman: {
-        extra: { deff: 2, damage: 2, otrazh: 3 },
-        zatochkaBuffs: getDefaultZatochkaBuffs()
-    },
-    xikkaistoka: {
-        extra: { deff: 2, damage: 2, otrazh: 3 },
-        zatochkaBuffs: getDefaultZatochkaBuffs()
-    },
-	power: {
-		extra: { deff: 2, damage: 2, otrazh: 3 },
-		zatochkaBuffs: getDefaultZatochkaBuffs()
-	},
-	makima: {
-		extra: { deff: 2, damage: 2, otrazh: 3 },
-		zatochkaBuffs: getDefaultZatochkaBuffs()
-	},
-	dedpul: {
-		extra: { damage: 2, krit: 2, otrazh: 3 },
-		zatochkaBuffs: getDefaultZatochkaBuffs()
-	},
-		
-};
-
-function getCharacterBuff() {
-    const character = characters[currentSkin] || { extra: {}, zatochkaBuffs: {} };
-    let buffed = {};
-
-    for (let stat in character.extra) {
-        buffed[stat] = (buffed[stat] || 0) + character.extra[stat];
-    }
-
-    const zatochkaStats = character.zatochkaBuffs[characterUpgradeLevel] || {};
-    for (let stat in zatochkaStats) {
-        buffed[stat] = (buffed[stat] || 0) + zatochkaStats[stat];
-    }
-
-    return buffed;
-}
-
-function updateCharacterImage() {
-    let randomElement;
-
-    do {
-        randomElement = getRandomElement(myArray);
-    } while (randomElement === currentSkin);
-
-    currentSkin = randomElement;
-    $('#character-image').attr('src', `${basePath}imgs/characters/${randomElement}.png`);
-    updateStats();
-}
-
-function getDefaultZatochkaBuffs() {
-    return {
-        1: { hpmax: 1, armourmax: 1 },
-        2: { hpmax: 2, armourmax: 2 },
-        3: { deff: 2, hpmin: 1, damage: 1, krit: 1, hpmax: 3, armourmax: 3 },
-        4: { deff: 2, hpmin: 1, damage: 1, krit: 1, hpmax: 4, armourmax: 4 },
-        5: { deff: 4, hpmin: 2, damage: 2, krit: 2, hpmax: 5, armourmax: 5 },
-        6: { deff: 4, hpmin: 2, damage: 2, krit: 2, hpmax: 6, armourmax: 6 },
-        7: { deff: 4, hpmin: 2, damage: 2, krit: 2, hpmax: 7, armourmax: 7 },
-        8: { deff: 6, hpmin: 3, damage: 3, krit: 3, hpmax: 8, armourmax: 8 },
-        9: { deff: 6, hpmin: 3, damage: 3, krit: 3, hpmax: 9, armourmax: 9 },
-        10: { deff: 8, hpmin: 4, damage: 4, krit: 4, hpmax: 10, armourmax: 10 },
-        11: { deff: 8, hpmin: 4, damage: 4, krit: 4, hpmax: 11, armourmax: 11 },
-        12: { deff: 8, hpmin: 4, damage: 4, krit: 4, hpmax: 12, armourmax: 12 }
-    };
-}
-
 function getSlotNameFromItem(item) {
     const match = item.getAttribute('src').match(/\.\/imgs\/([^/]+)\//);
+    return match ? match[1] : null;
+}
+
+function getSkinNameFromSrc(src) {
+    const match = src.match(/\/skins\/([^/.]+)\.png$/);
     return match ? match[1] : null;
 }
 
@@ -387,7 +584,7 @@ class ItemPlacer {
         return match ? match[1] : null;
     }
 
-    createItemElement(imageSrc, stats, upg, yellow) {
+    createItemElement(imageSrc, stats, upg, yellow, ru_name) {
 
         const img = document.createElement('img');
         img.src = imageSrc;
@@ -395,12 +592,13 @@ class ItemPlacer {
         img.className = 'main'
         img.setAttribute('data-stats', JSON.stringify(stats));
         img.setAttribute('data-upg', upg);
+        img.setAttribute('data-ru_name', ru_name);
         img.setAttribute('data-yellow', JSON.stringify(yellow));
 
         return img;
     }
 
-    placeItem(imageSrc, stats, upg, yellow) {
+    placeItem(imageSrc, stats, upg, yellow, ru_name) {
 
         const slotName = this.getSlotNameFromSrc(imageSrc);
         if (!slotName) {
@@ -414,7 +612,7 @@ class ItemPlacer {
 
         if (container) {
 
-            const img = this.createItemElement(imageSrc, stats, upg, yellow);
+            const img = this.createItemElement(imageSrc, stats, upg, yellow, ru_name);
             container.appendChild(img);
         }
     }
@@ -424,7 +622,7 @@ class ItemPlacer {
 const placer = new ItemPlacer();
 
 items.forEach(item => {
-    placer.placeItem(item.imageSrc, item.stats, item.upg, item.yellow);
+    placer.placeItem(item.imageSrc, item.stats, item.upg, item.yellow, item.ru_name);
 });
 
 function getMultiplier(type) {
@@ -450,6 +648,34 @@ function updateStats() {
     var opyan = 0;
     var neoglysh = 0;
     var otrazh = 0;
+    var block = 0;
+    var rof = 0;
+    var recoil = 0;
+
+    if (selectedSkin) {
+        deff += 8;
+        hpmin += 4;
+        damage += 4;
+        krit += 4;
+        hpmax += 12;
+        armourmax += 12;
+        if (selectedSkin != 'default') {
+            var yellow_skin = selectedSkin.yellow;
+            deff += yellow_skin.deff || 0;
+            hpmin += yellow_skin.hpmin || 0;
+            damage += yellow_skin.damage || 0;
+            krit += yellow_skin.krit || 0;
+            hpmax += yellow_skin.hpmax || 0;
+            armourmax += yellow_skin.armourmax || 0;
+            oglysh += yellow_skin.oglysh || 0;
+            opyan += yellow_skin.opyan || 0;
+            neoglysh += yellow_skin.neoglysh || 0;
+            otrazh += yellow_skin.otrazh || 0;
+            block += yellow_skin.block || 0;
+            rof += yellow_skin.rof || 0;
+            recoil += yellow_skin.recoil || 0;
+        }
+    }
 
     gridItems.forEach(item => {
         const img = item.querySelector('img.main');
@@ -457,7 +683,13 @@ function updateStats() {
             const stats = JSON.parse(img.dataset.stats);
             const type = img.dataset.upg;
             const yellow_stats = JSON.parse(img.dataset.yellow);
-            let nashivka = img.dataset.nashivka ? JSON.parse(img.dataset.nashivka) : {};
+            const yellow_name = img.dataset.yellow_name
+            const ru_name = img.dataset.ru_name;
+            if (img.dataset.nashivka == undefined) {
+                nashivka = {}
+            } else {
+                nashivka = JSON.parse(img.dataset.nashivka);
+            }
 
             const upgrader = getMultiplier(type)
             if (type != '') {
@@ -469,54 +701,78 @@ function updateStats() {
                 } else {
                     if (zatochka >= 4) {
                         stats[type] += (zatochka - 3) * upgrader;
-                        if (zatochka == 13) {
-                            stats.armourmax = (stats.armourmax || 0) + 9;
-                            stats.hpmax = (stats.hpmax || 0) + 4;
-						}
-						if (zatochka == 14) {
-                            stats.otrazh = (stats.otrazh ||  0) + 1;
-                            stats.hpmin = (stats.hpmin ||  0) + 3;
-                            stats.armourmax = (stats.armourmax ||  0) + 14;
-                            stats.hpmax = (stats.hpmax ||  0) + 4;
+                        if (zatochka >= 13) {
+                            if (stats.armourmax == undefined) {
+                                stats.armourmax = 0;
+                            }
+                            if (stats.hpmax == undefined) {
+                                stats.hpmax = 0;
+                            }
+                            stats.armourmax += 9;
+                            stats.hpmax += 4;
+                        }
+                        if (zatochka == 14) {
+                            if (stats.otrazh == undefined) {
+                                stats.otrazh = 0
+                            }
+                            if (stats.opyan == undefined) {
+                                stats.opyan = 0
+                            }
+                            stats.armourmax += 5;
+                            stats.opyan += 2;
+                            stats.otrazh += 1;
                         }
                     }
                 }
             }
 
-            deff += (nashivka.deff || 0) + (yellow_stats.deff || 0) + (stats.deff || 0);
-            hpmin += (yellow_stats.hpmin || 0) + (stats.hpmin || 0);
-            damage += (nashivka.damage || 0) + (yellow_stats.damage || 0) + (stats.damage || 0);
-            krit += (nashivka.krit || 0) + (yellow_stats.krit || 0) + (stats.krit || 0);
-            hpmax += (yellow_stats.hpmax || 0) + (stats.hpmax || 0);
-            armourmax += (yellow_stats.armourmax || 0) + (stats.armourmax || 0);
-            oglysh += (yellow_stats.oglysh || 0) + (stats.oglysh || 0);
-            opyan += (yellow_stats.opyan || 0) + (stats.opyan || 0);
-            neoglysh += (nashivka.neoglysh || 0) + (yellow_stats.neoglysh || 0) + (stats.neoglysh || 0);
-            otrazh += (nashivka.otrazh || 0) + (yellow_stats.otrazh || 0) + (stats.otrazh || 0);
+            deff += nashivka.deff || 0;
+            hpmin += nashivka.hpmin || 0;
+            damage += nashivka.damage || 0;
+            krit += nashivka.krit || 0;
+            hpmax += nashivka.hpmax || 0;
+            otrazh += nashivka.otrazh || 0;
+            oglysh += nashivka.oglysh || 0;
+            neoglysh += nashivka.neoglysh || 0;
+
+            deff += yellow_stats.deff || 0;
+            hpmin += yellow_stats.hpmin || 0;
+            damage += yellow_stats.damage || 0;
+            krit += yellow_stats.krit || 0;
+            hpmax += yellow_stats.hpmax || 0;
+            armourmax += yellow_stats.armourmax || 0;
+            oglysh += yellow_stats.oglysh || 0;
+            opyan += yellow_stats.opyan || 0;
+            neoglysh += yellow_stats.neoglysh || 0;
+            otrazh += yellow_stats.otrazh || 0;
+            block += yellow_stats.block || 0;
+            rof += yellow_stats.rof || 0;
+            recoil += yellow_stats.recoil || 0;
+
+            deff += stats.deff || 0;
+            hpmin += stats.hpmin || 0;
+            damage += stats.damage || 0;
+            krit += stats.krit || 0;
+            hpmax += stats.hpmax || 0;
+            armourmax += stats.armourmax || 0;
+            oglysh += stats.oglysh || 0;
+            opyan += stats.opyan || 0;
+            neoglysh += stats.neoglysh || 0;
+            otrazh += stats.otrazh || 0;
+            block += stats.block || 0;
+            rof += stats.rof || 0;
+            recoil += stats.recoil || 0;
+
+            if (yellow_name == 'Чемодан криминала') {
+                hpmax = Math.round(hpmax * 1.15);
+                armourmax = Math.round(armourmax * 1.15);
+            }
+
+            if (deff >= 90) {
+                deff = 90;
+            }
         }
     });
-
-    if (typeof getCharacterBuff === "function") {
-        const characterBuff = getCharacterBuff();
-        deff += characterBuff.deff || 0;
-        damage += characterBuff.damage || 0;
-        hpmax += characterBuff.hpmax || 0;
-        hpmin += characterBuff.hpmin || 0;
-        krit += characterBuff.krit || 0;
-        armourmax += characterBuff.armourmax || 0;
-        oglysh += characterBuff.oglysh || 0;
-        opyan += characterBuff.opyan || 0;
-        neoglysh += characterBuff.neoglysh || 0;
-        otrazh += characterBuff.otrazh || 0;
-    }
-
-    if (armourmax >= 160) {
-        armourmax = 160;
-    }
-    if (deff >= 90) {
-        deff = 90;
-    }
-
     $('span#deff').text(`[-${deff}% урона]`);
     $('span#hpmin').text(`[${hpmin} HP в мин.]`);
     $('span#damage').text(`[+${damage} урона]`);
@@ -527,6 +783,9 @@ function updateStats() {
     $('span#opyan').text(`[+${opyan}%]`);
     $('span#neoglysh').text(`[+${neoglysh}%]`);
     $('span#otrazh').text(`[-${otrazh}%]`);
+    $('span#block').text(`[${block} раз]`);
+    $('span#rof').text(`[+${rof}% скорострельности]`);
+    $('span#recoil').text(`[-${recoil}% отдачи]`);
 }
 
 const gridItems = document.querySelectorAll('.grid-item');
@@ -635,6 +894,7 @@ document.querySelectorAll('.grid-item').forEach(item => {
                     if (existingImg) {
                         existingImg.outerHTML = imgHtml;
                         $(item).find('img.default-accs').remove();
+                        $(item).find('img.nashivka').remove();
                     } else {
                         item.appendChild(imgElement);
                     }
@@ -665,116 +925,185 @@ function showPereshiv(slot) {
             items = [
                 {
                     name: 'nimbgearvlast',
+                    ru_name: 'Нимб кольца всевластия',
                     yellow: { deff: 3, damage: 3, krit: 1, hpmax: 19 }
                 },
                 {
                     name: 'tango',
+                    ru_name: 'Танго',
+                    yellow: { deff: 2, damage: 1, krit: 1, hpmax: 10 }
+                },
+				{
+                    name: 'nimbdori',
+                    ru_name: 'Нимб Доры',
                     yellow: { deff: 2, damage: 1, krit: 1, hpmax: 10 }
                 },
                 {
                     name: 'shlyapa4',
+                    ru_name: 'Эксклюзивная шляпа 4',
                     yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'shlyapa3',
+                    ru_name: 'Эксклюзивная шляпа 3',
                     yellow: { deff: 1, hpmax: 5 }
                 },
                 {
                     name: 'shlyapa2',
+                    ru_name: 'Эксклюзивная шляпа 2',
                     yellow: { krit: 1, hpmax: 5 }
                 },
                 {
                     name: 'shlyapa1',
+                    ru_name: 'Эксклюзивная шляпа 1',
                     yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'tact',
+                    ru_name: 'Тактический шлем',
                     yellow: { deff: 2, armourmax: 10 }
                 },
-				{
-					name: 'nimbdori',
-					yellow: { deff: 2, damage: 1, krit: 1, hpmax: 10 }
-				},
-				
-			 ]
+                {
+                    name: 'piratehat1',
+                    ru_name: 'Пиратская шляпа №1',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'piratehat2',
+                    ru_name: 'Пиратская шляпа №2',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'piratehat3',
+                    ru_name: 'Пиратская шляпа №3',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'cherepandkosti',
+                    ru_name: 'Череп и кости',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'crownofpatroni',
+                    ru_name: 'Корона из патрон',
+                    yellow: { krit: 2, neoglysh: 8, otrazh: 2 }
+                },
+            ]
             break;
         case 'face':
             items = [
                 {
+                    name: 'energymaskghost',
+                    ru_name: 'Энерго маска Госта',
+                    yellow: { deff: 5, damage: 5, hpmax: 20, opyan: 4, block: 4 }
+                },
+                {
+                    name: 'respik',
+                    ru_name: 'Респиратор',
+                    yellow: { deff: 1, damage: 1 }
+                },
+                {
                     name: 'cherep',
+                    ru_name: 'Маска череп',
                     yellow: { damage: 2, armourmax: 10 }
                 },
                 {
                     name: 'frontman',
+                    ru_name: 'Маска распорядителя',
                     yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'kvadrat',
+                    ru_name: 'Маска охранника 1',
                     yellow: { krit: 1, hpmax: 5 }
                 },
                 {
                     name: 'krug',
+                    ru_name: 'Маска охранника 3',
                     yellow: { deff: 1, hpmax: 5 }
                 },
                 {
                     name: 'treugolnik',
+                    ru_name: 'Маска охранника 2',
                     yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'loki',
+                    ru_name: 'Маска Локи',
                     yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'wrench',
+                    ru_name: 'Маска \'Wrench\'',
                     yellow: { deff: 1, hpmax: 5 }
                 },
-				
             ]
             break;
         case 'hand':
             items = [
                 {
                     name: 'bumblebee',
+                    ru_name: 'Оружие Бамбли Би',
                     yellow: { deff: 1, damage: 1 }
                 },
                 {
                     name: 'energowatch',
+                    ru_name: 'Энергетические часы',
                     yellow: { deff: 2, damage: 2, hpmax: 5, armourmax: 5, otrazh: 6 }
                 },
                 {
+                    name: 'pirateflashlight',
+                    ru_name: 'Пиратский фонарь',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'banditarbalet',
+                    ru_name: 'Бандитский арбалет',
+                    yellow: { krit: 3, neoglysh: 4, otrazh: 1 }
+                },
+                {
                     name: 'watch1',
+                    ru_name: 'Часы \'Panthere de Cartier\'',
                     yellow: { krit: 1, hpmax: 5 }
                 },
                 {
                     name: 'watch2',
+                    ru_name: 'Часы \'Relogios Casio\'',
                     yellow: { deff: 1, hpmax: 5 }
                 },
                 {
                     name: 'watch3',
+                    ru_name: 'Часы \'Rolex Submariner\'',
                     yellow: { deff: 1, hpmax: 5 }
                 },
                 {
                     name: 'watch4',
+                    ru_name: 'Часы \'Gucci\'',
                     yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'watch5',
+                    ru_name: 'Часы \'Patek Philippe Nautilus\'',
                     yellow: { krit: 1, hpmax: 5 }
                 },
                 {
                     name: 'watch6',
+                    ru_name: 'Часы \'Apple Watch\'',
                     yellow: { deff: 1, hpmax: 5 }
                 },
                 {
                     name: 'watch7',
+                    ru_name: 'Часы \'Casio G-SHOCK\'',
                     yellow: { damage: 1, hpmax: 5 }
-                }
+                },
+
             ]
             break;
         case 'breast':
             items = [
                 {
                     name: 'ilum',
+                    ru_name: 'Цепь Иллюмината',
                     yellow: { deff: 1, damage: 1 }
                 }
             ]
@@ -783,6 +1112,7 @@ function showPereshiv(slot) {
             items = [
                 {
                     name: 'arkanaio',
+                    ru_name: 'Аркана ИО',
                     yellow: { deff: 2, damage: 1, krit: 1, hpmax: 10 }
                 }
             ]
@@ -791,41 +1121,159 @@ function showPereshiv(slot) {
             items = [
                 {
                     name: 'bloodywings',
+                    ru_name: 'Кровавые крылья',
                     yellow: { deff: 2, damage: 2 }
                 },
                 {
                     name: 'spiderlegs',
+                    ru_name: 'Паучьи лапы',
                     yellow: { deff: 1, damage: 1 }
                 },
                 {
+                    name: 'kosaredrose',
+                    ru_name: 'Коса Красной Розы',
+                    yellow: { damage: 2, hpmax: 8, armourmax: 8, otrazh: 1 }
+                },
+                {
+                    name: 'poyasbalon',
+                    ru_name: 'Пояс с баллончиками',
+                    yellow: { armourmax: 50 }
+                },
+                {
+                    name: 'piratesabers',
+                    ru_name: 'Пиратские сабли',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'piratechest',
+                    ru_name: 'Пиратский сундук',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'seaanchor',
+                    ru_name: 'Морской якорь',
+                    yellow: { deff: 1, damage: 1, krit: 1, oglysh: 1 }
+                },
+                {
+                    name: 'deltik',
+                    ru_name: 'Дельтаплан на спину',
+                    yellow: { damage: 1, hpmax: 5 }
+                },
+                {
                     name: 'battlefury',
+                    ru_name: 'Батлфьюри',
                     yellow: { deff: 5, krit: 5, hpmax: 5 }
                 },
                 {
                     name: 'desolator',
+                    ru_name: 'Дезолятор',
                     yellow: { damage: 2, krit: 4, neoglysh: 3, otrazh: 1 }
                 },
                 {
                     name: 'firepickaxe',
+                    ru_name: 'Огненная кирка',
                     yellow: { damage: 1, hpmax: 5 }
                 },
                 {
                     name: 'creeper',
+                    ru_name: 'Рюкзак \'Крипер\'',
                     yellow: { deff: 1, hpmax: 5 }
                 },
                 {
                     name: 'aegis',
+                    ru_name: 'Аегис',
                     yellow: { damage: 2, hpmax: 8, armourmax: 8, otrazh: 1 }
                 },
                 {
                     name: 'trax',
+                    ru_name: 'Арбалет Траксы',
                     yellow: { damage: 2, hpmax: 7, armourmax: 7, otrazh: 1 }
+                },
+				{
+                    name: 'ribak',
+                    ru_name: 'Рыбацкий рюкзак',
+                    yellow: {}
+                },
+				{
+                    name: 'elitelavka',
+                    ru_name: 'Элитная переносная лавка',
+                    yellow: {}
+                },
+				{
+                    name: 'rukiseta',
+                    ru_name: 'Руки Сэта',
+                    yellow: {}
+                },
+				{
+                    name: 'mechvk',
+                    ru_name: 'Меч ВК',
+                    yellow: {}
                 },
             ]
             break;
         case 'armour':
-            items = []
+            items = [
+                {
+                    name: 'tactarmour',
+                    ru_name: 'Тактический бронежилет',
+                    yellow: { krit: 2, armourmax: 10 }
+                },
+                {
+                    name: 'armourgraffiti',
+                    ru_name: 'Бронежилет с граффити',
+                    yellow: { armourmax: 50 }
+                },
+                {
+                    name: 'armour1',
+                    ru_name: 'Бронежилет #1',
+                    yellow: { krit: 1, hpmax: 5 }
+                },
+                {
+                    name: 'armour2',
+                    ru_name: 'Бронежилет #2',
+                    yellow: { deff: 1, hpmax: 5 }
+                },
+                {
+                    name: 'armour3',
+                    ru_name: 'Бронежилет #3',
+                    yellow: { damage: 1, hpmax: 5 }
+                },
+                {
+                    name: 'armour4',
+                    ru_name: 'Бронежилет #4',
+                    yellow: { krit: 1, hpmax: 5 }
+                },
+                {
+                    name: 'armour5',
+                    ru_name: 'Бронежилет #5',
+                    yellow: { deff: 1, hpmax: 5 }
+                },
+                {
+                    name: 'armour6',
+                    ru_name: 'Бронежилет #6',
+                    yellow: { deff: 1, hpmax: 5 }
+                },
+                {
+                    name: 'armour7',
+                    ru_name: 'Бронежилет #7',
+                    yellow: { damage: 1, hpmax: 5 }
+                },
+                {
+                    name: 'armour8',
+                    ru_name: 'Бронежилет #8',
+                    yellow: { krit: 1, hpmax: 5 }
+                },
+            ]
             break;
+        case 'case':
+            items = [
+                {
+                    name: 'chemcriminal',
+                    ru_name: 'Чемодан криминала',
+                    yellow: { deff: 2, damage: 6, rof: 10, recoil: 10 },
+                    buff: { hpmax: 15, armourmax: 15 }
+                },
+            ]
         default:
             break;
     }
@@ -839,10 +1287,16 @@ function showPereshiv(slot) {
             var img = document.createElement('img');
             img.src = `${basePath}imgs/${slot}/${item.name}.png`;
             img.setAttribute('data-yellow', JSON.stringify(item.yellow));
+            if (item.buff) {
+                img.setAttribute('data-buff', JSON.stringify(item.buff));
+            }
+            img.setAttribute('data-runame', JSON.stringify(item.ru_name));
             img.style.position = 'relative';
 
             img.addEventListener('click', function () {
                 current_item.dataset.yellow = this.getAttribute('data-yellow');
+                current_item.dataset.buff = this.getAttribute('data-buff');
+                current_item.dataset.yellow_name = this.getAttribute('data-runame').replaceAll('"', '');;
                 var img_temp = document.createElement('img');
                 img_temp.src = current_item.src;
                 img_temp.className = "default-accs"
@@ -859,15 +1313,41 @@ function showPereshiv(slot) {
 
             img.addEventListener('mouseenter', function (event) {
                 var yellowData = JSON.parse(this.getAttribute('data-yellow'));
+                var buffData = JSON.parse(this.getAttribute('data-buff'));
+                var ru_name = this.getAttribute('data-runame');
 
+                tooltip.innerHTML = '';
 
-                var tooltipText = '';
+                var mainText = document.createElement('div');
+                mainText.textContent = ru_name.replaceAll('"', '');
+                mainText.style.marginBottom = '10px';
+                tooltip.appendChild(mainText);
+
+                var spacer = document.createElement('div');
+                spacer.style.marginBottom = '10px';
+                tooltip.appendChild(spacer);
+
+                if (buffData) {
+                    for (var key in buffData) {
+                        if (RuTypes[key]) {
+                            var yellowElement = document.createElement('div');
+                            yellowElement.textContent = `Предмет даёт +${buffData[key]}% к ${RuTypes[key]}`;
+                            yellowElement.style.color = 'yellow';
+                            tooltip.appendChild(yellowElement);
+                        }
+                    }
+                    tooltip.appendChild(document.createElement('br'))
+                }
+
                 for (var key in yellowData) {
                     if (RuTypes[key]) {
-                        tooltipText += `${RuTypes[key]}: ${yellowData[key]}<br>`;
+                        var yellowElement = document.createElement('div');
+                        yellowElement.textContent = `${RuTypes[key]}: ${yellowData[key]}`;
+                        yellowElement.style.color = 'yellow';
+                        tooltip.appendChild(yellowElement);
                     }
                 }
-                tooltip.innerHTML = tooltipText;
+
                 tooltip.style.display = 'block';
             });
 
@@ -887,9 +1367,9 @@ if (isMobileDevice()) {
         modalDelete.style.display = 'block'
         const img = temp_info.dom
         const gridItem = $(img).closest('.grid-item')
-        $('#modalDelete .modal h2').text(`Вы уверены что хотите удалить аксессуар из слота ${RuSlots[gridItem.attr('id')]}?`)
+        $('#modalDelete .modal h2').text(`Вы уверены что хотите удалить аксессуар из слота "${RuSlots[gridItem.attr('id')]}"?`)
     }
-    
+
     function reallyDelete(imgHtml) {
         if (imgHtml) {
             document.querySelectorAll('.grid-item img').forEach(img => {
@@ -906,23 +1386,23 @@ if (isMobileDevice()) {
 } else {
     const trash = document.querySelector('.trash');
     const trashTooltip = document.querySelector('#trashtooltip')
-    
+
     trash.addEventListener('mouseover', () => {
         trashTooltip.style.display = 'block';
-    
+
     });
-    
+
     trash.addEventListener('mouseout', () => {
         trashTooltip.style.display = 'none';
     });
     trash.addEventListener('dragover', (e) => {
         e.preventDefault();
     });
-    
+
     trash.addEventListener('drop', (e) => {
         e.preventDefault();
         const imgHtml = e.dataTransfer.getData('img-html');
-    
+
         if (imgHtml) {
             document.querySelectorAll('.grid-item img').forEach(img => {
                 if (img.outerHTML === imgHtml) {
@@ -947,50 +1427,96 @@ function getRandomElement(arr) {
 }
 
 const myArray = [
+    'fenny',
+    'pudge',
+    'osel',
     'ct',
+    'bbt',
+    'hitok',
     'homelander',
     'rilay',
     'superman',
-    'xikkaistoka',
-	'power',
-	'makima',
-	'dedpul'
+    'aura',
+    'power',
+    'lego',
+    'mafia',
+    'woozie',
+    'yoda'
 ]
 
 $(document).ready(function () {
     let previousElement = null;
 
-    function updateCharacterImage() {
-        let randomElement;
+    function renderSkins() {
+        const container = $('.modal-skins');
+        container.empty();
 
-        do {
-            randomElement = getRandomElement(myArray);
-        } while (randomElement === previousElement);
+        skins.forEach((skin, i) => {
+            let statsHtml = '';
+            for (const stat in skin.yellow) {
+                if (RuTypes[stat]) {
+                    statsHtml += `<span>${RuTypes[stat]}: ${skin.yellow[stat]}</span>`;
+                }
+            }
 
-        previousElement = randomElement;
-        currentSkin = randomElement;
-        $('#character-image').attr('src', `${basePath}imgs/characters/${randomElement}.png`);
-        updateStats();
+            const skinHtml = `
+            <div class="modal-skin" data-index="${i}">
+                <img src="${skin.imageSrc}" alt="${skin.ru_name}" />
+                <div class="skin-name">${skin.ru_name}</div>
+                <div class="skin-stats">${statsHtml}</div>
+            </div>
+        `;
+
+            container.append(skinHtml);
+        });
     }
 
-    updateCharacterImage();
+    renderSkins();
 
     var character = $('#character')
     var tooltip = character.find('.tooltip');
-    
+
+    character.on('click', function () {
+        $('#modalSkinsOverlay').css('display', 'flex').hide().fadeIn(200);
+    });
     if (!isMobileDevice()) {
+        console.log('not mobile');
         character.on('mouseover', function () {
             tooltip.show();
+            console.log('show');
         });
-        
+
         character.on('mouseout', function () {
             tooltip.hide();
+            console.log('hide');
         });
     }
+    $('#closeNoneSkinModal').on('click', function () {
+        $('#modalSkinsOverlay').fadeOut(200, function () {
+            $(this).css('display', 'none');
+            selectedSkin = null;
+            $('#character-image').attr('src', `${basePath}imgs/characters/mafia.png`);
+            updateStats();
+        });
+    });
 
-    $('#character-upgrade-level').on('change', function() {
-        characterUpgradeLevel = parseInt($(this).val(), 10);
+    $('#closeXModalSkin').on('click', function () {
+        $('#modalSkinsOverlay').fadeOut(200, function () {
+            $(this).css('display', 'none');
+            updateStats();
+        });
+    });
+
+
+    $('.modal-skin').on('click', function () {
+        const index = $(this).data('index');
+        const skin = skins[index];
+        $('#character-image').attr('src', skin.imageSrc);
+        selectedSkin = skin;
         updateStats();
+        $('#modalSkinsOverlay').fadeOut(200, function () {
+            $(this).css('display', 'none');
+        });
     });
 
     $('.btn.plus').on('click', function (e) {
@@ -1006,6 +1532,7 @@ $(document).ready(function () {
         }
     });
 
+
     $('.btn.minus').on('click', function (e) {
         if (isMobileDevice()) {
             e.stopPropagation();
@@ -1019,72 +1546,6 @@ $(document).ready(function () {
         }
     });
 
-    $('.btn.plus-character').on('click', function (e) {
-        if (isMobileDevice()) {
-            e.stopPropagation();
-        }
-    
-        if (characterUpgradeLevel < 12) {
-            characterUpgradeLevel++;
-            $('#character-zatoch-value').text(`+${characterUpgradeLevel}`);
-            updateStats();
-        }
-    });
-    
-    $('.btn.minus-character').on('click', function (e) {
-        if (isMobileDevice()) {
-            e.stopPropagation();
-        }
-    
-        if (characterUpgradeLevel > 0) {
-            characterUpgradeLevel--;
-            $('#character-zatoch-value').text(`+${characterUpgradeLevel}`);
-            updateStats();
-        }
-    });
-
-    $('.btn.nashivka').on('click', function (e) {
-        if (isMobileDevice()) {
-            e.stopPropagation();
-        }
-
-        var $gridItem = $(this).closest('.grid-item');
-        var $buttonContainer = $('<div class="button-container"></div>');
-        var buttons = [
-            { text: 'ДЕФФ', type: 'deff', value: 6 },
-            { text: 'УРОН', type: 'damage', value: 3 },
-            { text: 'КРИТ', type: 'krit', value: 3 },
-            { text: 'ОТРАЖЕНИЕ', type: 'otrazh', value: 3 }
-        ];
-        buttons.forEach(function (button) {
-            var $button = $('<button class="btn">' + button.text + '</button>');
-            $button.on('click', function (e) {
-                if (isMobileDevice()) {
-                    e.stopPropagation();
-                }
-                var item = $gridItem.find('img.main')[0]
-                var tooltip = $gridItem.find('.tooltip')[0]
-                $($gridItem).find('.tooltip').text($($gridItem).attr('ru-name'))
-                if (item != undefined) {
-                    item.dataset.nashivka = `{"${button.type}": ${button.value}}`
-                    if (item.dataset.nashivka != undefined) {
-                        var nashivkaType = button.type;
-                        var ruName = RuTypes[nashivkaType];
-
-                        if (ruName) {
-                            tooltip.innerHTML = `${tooltip.innerHTML}<br>Нашивка: ${ruName}`;
-                        }
-                    }
-                    updateStats()
-                }
-                $buttonContainer.remove();
-            });
-            $buttonContainer.append($button);
-        });
-
-        $gridItem.append($buttonContainer);
-    });
-
     $('.btn.nashivkabronik').on('click', function (e) {
         if (isMobileDevice()) {
             e.stopPropagation();
@@ -1096,7 +1557,7 @@ $(document).ready(function () {
         $($gridItem).find('.tooltip').text($($gridItem).attr('ru-name'))
         if (item != undefined) {
             item.dataset.nashivka = `{"neoglysh": 20}`
-            
+
             if (item.dataset.nashivka != undefined) {
                 tooltip.innerHTML = `${tooltip.innerHTML}<br>Нашивка: Есть`;
             }
@@ -1105,20 +1566,21 @@ $(document).ready(function () {
     });
 
     const closeModalButton = document.getElementById('closeModal');
+    const closeModalXButton = document.getElementById('closeXModal');
     const testButton = document.getElementById('addYellowStats');
     const modalOverlay = document.getElementById('modalOverlay');
 
     if (isMobileDevice()) {
         const modalDelete = document.getElementById('modalDelete');
-    
+
         const yesDeleteButton = document.getElementById('yesDelete');
         const noDeleteButton = document.getElementById('noDelete');
-        
+
         yesDeleteButton.addEventListener('click', () => {
             modalDelete.style.display = 'none';
             reallyDelete(temp_info.html)
         });
-        
+
         noDeleteButton.addEventListener('click', () => {
             modalDelete.style.display = 'none';
         });
@@ -1133,21 +1595,103 @@ $(document).ready(function () {
         }
     });
 
-    $('#character-select').on('click', function () {
-        $('#character-list').toggle();
+    closeModalXButton.addEventListener('click', () => {
+        modalOverlay.style.display = 'none';
+
+        var modalAccs = document.querySelector('.modal-accs');
+        while (modalAccs.firstChild) {
+            modalAccs.removeChild(modalAccs.firstChild);
+        }
     });
 
-    $('.character-option').on('click', function () {
-        const skin = $(this).data('skin');
-        currentSkin = skin;
-        $('#character-image').attr('src', `${basePath}imgs/characters/${skin}.png`);
-        $('#character-list').hide();
-        updateStats();
+    const closeNashivkaModalButton = document.getElementById('closeNashivkaModal');
+    const closeNashivkaModalXButton = document.getElementById('closeXModalNashivka');
+
+    const modalNashivkaOverlay = document.getElementById('modalNashivkaOverlay');
+
+    closeNashivkaModalButton.addEventListener('click', () => {
+        modalNashivkaOverlay.style.display = 'none';
+
+        var modalNashivki = document.querySelector('.modal-nashivki');
+        while (modalNashivki.firstChild) {
+            modalNashivki.removeChild(modalNashivki.firstChild);
+        }
     });
 
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('#character-select, #character-list').length) {
-            $('#character-list').hide();
+    closeNashivkaModalXButton.addEventListener('click', () => {
+        modalNashivkaOverlay.style.display = 'none';
+
+        var modalNashivki = document.querySelector('.modal-nashivki');
+        while (modalNashivki.firstChild) {
+            modalNashivki.removeChild(modalNashivki.firstChild);
+        }
+    });
+
+    $('.btn.nashivka').on('click', function (e) {
+        if (isMobileDevice()) {
+            e.stopPropagation();
+        }
+        const container = $('.modal-nashivki');
+        container.empty();
+        var gridItem = $(this).closest('.grid-item');
+        var item_slot = gridItem.attr('id');
+        var item_ = gridItem.find('img.main')[0];
+
+        nashivki.forEach((nashivka, i) => {
+            if (nashivka.slot == item_slot || nashivka.slot == 'all') {
+                let statsHtml = '';
+                for (const stat in nashivka.stats) {
+                    if (RuTypes[stat]) {
+                        statsHtml += `<span>${RuTypes[stat]}: ${nashivka.stats[stat]}</span>`;
+                    }
+                }
+
+                const nashivkaHtml = `
+                    <div class="modal-nashivka" data-index="${i}" data-slot="${item_slot}" data-image="${nashivka.imageSrc}">
+                        <img src="${nashivka.imageSrc}" alt="${nashivka.ru_name}" />
+                        <div class="nashivka-name">${nashivka.ru_name}</div>
+                        <div class="nashivka-name" style="font-size: 12px; color: pink;">${nashivka.slot_name}</div>
+                        <div class="nashivka-stats">${statsHtml}</div>
+                    </div>
+                `;
+
+                container.append(nashivkaHtml);
+            }
+        });
+
+        container.on('click', '.modal-nashivka', function (e) {
+            if (isMobileDevice()) {
+                e.stopPropagation();
+            }
+
+            container.off('click', '.modal-nashivka');
+
+            const index = $(this).data('index');
+            const slot = $(this).data('slot');
+            const $gridItem = $(`.grid-item#${slot}`);
+            var item = $gridItem.find('img.main')[0];
+            var tooltip = $gridItem.find('.tooltip')[0];
+            var nashivka = nashivki[index];
+
+            console.log('click: ', nashivka);
+            $($gridItem).find('.tooltip').text($($gridItem).attr('ru-name'));
+            console.log($gridItem)
+            if (item != undefined) {
+                item.dataset.nashivka = JSON.stringify(nashivka.stats);
+                if (item.dataset.nashivka != undefined) {
+                    var ruName = nashivka.ru_name;
+                    if (ruName) {
+                        tooltip.innerHTML = `${tooltip.innerHTML}<br>${ruName}`;
+                    }
+                    $gridItem.find('img.nashivka').remove();
+                    item.insertAdjacentHTML('afterend', `<img src="${nashivka.imageSrc}" class="nashivka">`);
+                }
+                updateStats();
+            }
+            $('#modalNashivkaOverlay').css('display', 'none').hide().fadeOut(200);
+        });
+        if (item_ != undefined) {
+            $('#modalNashivkaOverlay').css('display', 'flex').hide().fadeIn(200);
         }
     });
 });
