@@ -1114,7 +1114,12 @@ function showPereshiv(slot) {
                     name: 'arkanaio',
                     ru_name: 'Аркана ИО',
                     yellow: { deff: 2, damage: 1, krit: 1, hpmax: 10 }
-                }
+                },
+				{
+                    name: 'sferinvokera',
+                    ru_name: 'Сферы Инвокера',
+                    yellow: {}
+				}
             ]
             break;
         case 'spine':
@@ -1207,6 +1212,11 @@ function showPereshiv(slot) {
 				{
                     name: 'mechvk',
                     ru_name: 'Меч ВК',
+                    yellow: {}
+                },
+				{
+                    name: 'mineskelet',
+                    ru_name: 'МайнСкелет',
                     yellow: {}
                 },
             ]
