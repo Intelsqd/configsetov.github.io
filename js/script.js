@@ -526,10 +526,45 @@ const skins = [
         ru_name: 'Скуф'
     },
 	{
+        imageSrc: `${basePath}imgs/skins/superman.png`,
+        yellow: {deff: 2, damage: 2, otrazh: 3},
+        ru_name: 'Супермен'
+    },
+	{
         imageSrc: `${basePath}imgs/skins/yoda.png`,
 		stats: { deff: 0, hpmin: 0, damage: 0, krit: 0, maxhp: 0},
         yellow: {},
         ru_name: 'Йода'
+    },
+	{
+        imageSrc: `${basePath}imgs/skins/homelander.png`,
+		stats: { deff: 0, hpmin: 0, damage: 0, krit: 0, maxhp: 0},
+        yellow: {},
+        ru_name: 'Хоумлендер'
+    },
+	{
+        imageSrc: `${basePath}imgs/skins/alt.png`,
+		stats: { deff: 0, hpmin: 0, damage: 0, krit: 0, maxhp: 0, armourmax: 100},
+        yellow: {},
+        ru_name: 'Альтушка'
+    },
+	{
+        imageSrc: `${basePath}imgs/skins/lego.png`,
+		stats: { deff: 0, hpmin: 0, damage: 0, krit: 0, maxhp: 0},
+        yellow: {},
+        ru_name: 'Лего-человечек'
+    },
+	{
+        imageSrc: `${basePath}imgs/skins/oksanka.png`,
+		stats: { deff: 0, hpmin: 0, damage: 0, krit: 0, maxhp: 0},
+        yellow: {},
+        ru_name: 'Оксана Чемпионка'
+    },
+	{
+        imageSrc: `${basePath}imgs/skins/roller.png`,
+		stats: { deff: 0, hpmin: 0, damage: 0, krit: 0, maxhp: 0},
+        yellow: {},
+        ru_name: 'Джек Роллер'
     },
 ];
 
@@ -1114,12 +1149,7 @@ function showPereshiv(slot) {
                     name: 'arkanaio',
                     ru_name: 'Аркана ИО',
                     yellow: { deff: 2, damage: 1, krit: 1, hpmax: 10 }
-                },
-				{
-                    name: 'sferinvokera',
-                    ru_name: 'Сферы Инвокера',
-                    yellow: {}
-				}
+                }
             ]
             break;
         case 'spine':
@@ -1213,12 +1243,7 @@ function showPereshiv(slot) {
                     name: 'mechvk',
                     ru_name: 'Меч ВК',
                     yellow: {}
-                },
-				{
-                    name: 'mineskelet',
-                    ru_name: 'МайнСкелет',
-                    yellow: {}
-                },
+                }
             ]
             break;
         case 'armour':
